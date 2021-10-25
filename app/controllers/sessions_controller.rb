@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
 
       # create an error message.
       requested_user = User.where(email: email)
-      if !!requested_user.empty then
+      if !!requested_user then
 
         flash[:error] = "Invalid Password."
       else
