@@ -1,0 +1,54 @@
+<% provide(:title, "Register") %> 
+
+<h1>Dice Game</h1> <br>
+
+<h2>Sign In</h2>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    
+    <!-- create hash for session->:email and session->:password -->
+    <%= form_with(url: sign_in_path, scope: :session, local: true) do |f| %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control' %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+
+    <%= f.submit "Sign in", class: "btn btn-primary" %> <% end %> 
+  </div>
+</div>
+
+<% flash.each do |message_type, message| %>
+
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
+
+<p><i>Don't have an account? Sign up below!</i></p>
+
+<h2>Sign Up</h2>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    
+    <!-- create hash for session->:email and session->:password -->
+    <%= form_with(url: sign_up_path, scope: :session, local: true) do |f| %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control' %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+
+    <%= f.submit "Sign up", class: "btn btn-primary" %> <% end %> 
+  </div>
+</div>
+
+<% if flash.key? :status_msg %>
+  <p><%= flash[:status_msg] %></p>
+<% end %>

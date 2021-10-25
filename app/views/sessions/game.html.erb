@@ -1,0 +1,53 @@
+<h1> Items </h1>
+
+<h2> Coins </h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Denomination</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coins.each do |coin| %>
+      <tr>
+        <td><%= coin.denomination %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2> Die </h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Colour</th>
+      <th>Sides</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dies.each do |die| %>
+      <tr>
+        <td><%= die.colour %></td>
+        <td><%= die.sides %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3> Results </h3>
+<% flash.each do |message_type, message| %>
+
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+<br>
+
+<%= button_to 'Play Turn', turn_path%>
+
+<h3> Back to Profile </h3>
+<%= link_to 'Back', profile_path%>
